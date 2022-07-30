@@ -1,13 +1,13 @@
 package info.stephenderrick.security.controller;
 
 
-import info.stephenderrick.security.entity.User;
+import info.stephenderrick.security.model.AuthenticationResponse;
+import info.stephenderrick.security.model.LoginRequest;
 import info.stephenderrick.security.model.SignUpModel;
 import info.stephenderrick.security.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,6 +29,10 @@ public class AuthController {
         authService.verifyRegistration(token);
         return new ResponseEntity<String>("Account verified successfully", HttpStatus.OK);
     }
-
+    //Login
+    @PostMapping("login/")
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
+        return authService.login(loginRequest);
+    }
 
 }

@@ -24,3 +24,12 @@ spring:
           auth: true
           starttls:
             enable: true
+
+
+jwt:
+  expiration:
+    time: 90000
+  private:
+    key: classpath:app.key
+  public:
+    key: classpath:app.pub
